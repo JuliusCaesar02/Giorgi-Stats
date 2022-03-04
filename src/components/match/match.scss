@@ -1,0 +1,26 @@
+.stats{
+    display: flex;
+    flex-direction: row;
+    width: 40vw;
+    justify-content: space-between;
+    align-items: center;
+    .player{
+        width: 23vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-right: 4vh;
+    }
+    .score{
+        width: 10vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    &.teamId100{
+        background-color: lightblue;
+    }
+    &.teamId200{
+        background-color: lightcoral;
+    }
+}
