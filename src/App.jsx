@@ -2,10 +2,12 @@ import './App.scss';
 import { useEffect, useState } from "react";
 import Input from './components/input/input';
 import Match from './components/match/match';
+import $ from 'jquery';
 
 function App(){
   const [userData, setUserData] = useState([]);
   const [matchHistory, setMatchHistory] = useState([]);
+  sessionStorage.setItem('lastMatchId', 0)
 
    function getId(){ 
     console.log('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' +localStorage.getItem('username') +'?api_key=' +localStorage.getItem('apiKey'))
@@ -41,21 +43,22 @@ function App(){
       <Input input_text={'apiKey'} button_text={'submit'}/>      
 
       <div className="Profile">
-        <div className='profileIcon' style={{backgroundImage: 'url(http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/' +userData.profileIconId +'.png)'}}>
-          <p>{userData.summonerLevel}</p>
-        </div>
-
-
-        <h1>{userData.name}</h1>
+        <div className="playerData">
+          <div className='profileIcon' style={{backgroundImage: 'url(http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/' +userData.profileIconId +'.png)'}}>
+            <p>{userData.summonerLevel}</p> 
+          </div>
+          <h1>{userData.name}</h1>
+        </div>    
         <div>Match history</div>
         {  
         matchHistory.map((item)=>{
           return(
           <>
           <p className='matchId'>{item}</p>
-          <div className="match">
+          <div className={'match matchId' +item}>
             <Match matchId={item} key={item}/>
           </div>
+          
           </>
         )  
         })

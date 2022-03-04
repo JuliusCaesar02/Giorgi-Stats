@@ -1,8 +1,24 @@
+body{
+    background-color: #161616;
+    color: white;
+}
+.wintrue{
+    background-color: lightblue;
+}
+.winfalse{
+    background-color: lightcoral;
+}
+
 .match{
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.playerData{
+    display: flex;
     flex-direction: column;
-    height: 13vh;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 .matchId{
     padding-top: 5vh;
