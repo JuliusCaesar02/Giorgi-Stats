@@ -2,12 +2,10 @@ import './App.scss';
 import { useEffect, useState } from "react";
 import Input from './components/input/input';
 import Match from './components/match/match';
-import $ from 'jquery';
 
 function App(){
   const [userData, setUserData] = useState([]);
   const [matchHistory, setMatchHistory] = useState([]);
-  sessionStorage.setItem('lastMatchId', 0)
 
    function getId(){ 
     console.log('https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/' +localStorage.getItem('username') +'?api_key=' +localStorage.getItem('apiKey'))
