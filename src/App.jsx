@@ -35,34 +35,39 @@ function App(){
   return (
     
     <>
-      <Input input_text={'username'} button_text={'find'}/>
-      {useEffect(() => {
-      getId();
-      }, [])}
+      <div className="header">
+        <Input input_text={'username'} button_text={'find'}/>
+        {useEffect(() => {
+        getId();
+        }, [])}
+        <h1>Giorgi Stats</h1>
+        <Input input_text={'apiKey'} button_text={'submit'}/>      
+      </div>
 
-      <Input input_text={'apiKey'} button_text={'submit'}/>      
+      <div className="profile">
 
-      <div className="Profile">
         <div className="playerData">
           <div className='profileIcon' style={{backgroundImage: 'url(http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/' +userData.profileIconId +'.png)'}}>
             <p>{userData.summonerLevel}</p> 
           </div>
           <h1>{userData.name}</h1>
-        </div>    
-        <div>Match history</div>
-        {  
-        matchHistory.map((item)=>{
-          console.log(item)
-          return(
-          <>
-          <div className={'match matchId' +item}>
-            <Match matchId={item} key={item}/>
-          </div>
-          
-          </>
-        )  
-        })
-        }
+        </div>
+
+        <div className="matchHistory"> 
+          {  
+          matchHistory.map((item)=>{
+            console.log(item)
+            return(
+            <>    
+              <div className={'match matchId' +item}>           
+                <Match matchId={item} key={item}/>
+              </div>
+              <div className="line"></div>      
+            </>
+            )  
+          })
+          }
+        </div>  
       </div>
     </>
     

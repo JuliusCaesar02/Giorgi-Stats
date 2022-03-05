@@ -6,7 +6,7 @@ import './stats.scss'
 function Stats({player}){
     return(
         <>
-        <div className={'stats ' +'teamId' +player.teamId +((player.summonerName === localStorage.getItem('username')) ? ' itsYou': '')} key={player.puuid}>
+        <div className={'stats ' +((player.summonerName === localStorage.getItem('username')) ? ' itsYou': '')} key={player.puuid}>
                 <div className="player">
                     <div className='summonerName'>{player.summonerName}</div>
                     <div className='championName'>{player.championName}</div>

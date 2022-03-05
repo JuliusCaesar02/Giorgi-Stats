@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Stats from '../stats/stats';
 import './match.scss'
-import $ from 'jquery';
 
 function Match({matchId}){
     const [matchDetails, setMatchDetails] = useState()
@@ -16,55 +15,39 @@ function Match({matchId}){
             setMatchDetails(remoteData);
           })
           .catch(err => console.error('getMatch error:', err));
-    }
-
-    function formatta(matchId){
-        ///////////////////////////////
-        //Mettere a posto assolutamente
-        //Metodo poco convinvente e
-        //spesso difettoso. 
-        //Trovare alternativa wrap
-        ///////////////////////////////
-        const team100 = "<div class='team100 win" +matchDetails.info.teams[0].win +"'></div>"
-        const team200 = "<div class='team200 win" +matchDetails.info.teams[1].win +"'></div>"
-        if(matchId != sessionStorage.getItem('lastMatchId')){
-        ///////////////////////////////
-        //Costretto a fare così per non 
-        //avere una matrioska di div
-        //A volte però neanche renderizza
-        //o lo fa solo in parte
-        ///////////////////////////////
-        $('.matchId' +matchId +' .teamId100').wrapAll(team100)
-        $('.matchId' +matchId +' .teamId200').wrapAll(team200)
-        sessionStorage.setItem('lastMatchId', matchId);  
-        } 
-    }
+    }      
 
     useEffect(()=>{
         getMatchDetails(matchId)
       }, [matchId])  
+    
+      console.log(matchDetails)
 
-    if(matchDetails != undefined){
-        $(window).on('load', function() {
-            formatta(matchId)
-        })
-        return(
-            <>
-                {console.log(matchDetails.info)}
-                {
-                    matchDetails.info.participants.map((item)=>{
-                        return(    
-                            <>      
-                            <Stats player={item}/>          
-                            </>             
-                        )
-                    })
-                }
-            </>
-        )
-    }
+    if(matchDetails === undefined) return(
+        <div>Loading...</div>
+    )
+         
     else return(
-        <div>Loading</div>
+        <>
+            <div className={"team100 win" +matchDetails.info.participants[0].win}>
+                {
+                matchDetails.info.participants.map((item)=>{
+                    if (item.teamId === 100) return(
+                        <Stats player={item}/>
+                    )
+                }) 
+                } 
+            </div>
+            <div className={"team200 win" +!matchDetails.info.participants[0].win}>
+                {
+                matchDetails.info.participants.map((item)=>{
+                    if (item.teamId === 200) return(
+                        <Stats player={item}/>
+                    )
+                }) 
+                } 
+            </div>
+        </>
     )
 }
 export default Match;
