@@ -13,15 +13,13 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    padding: 2vh;
 }
 .playerData{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-.matchId{
-    padding-top: 5vh;
 }
 .profileIcon{  
     background-size: 150px;

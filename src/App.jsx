@@ -52,9 +52,9 @@ function App(){
         <div>Match history</div>
         {  
         matchHistory.map((item)=>{
+          console.log(item)
           return(
           <>
-          <p className='matchId'>{item}</p>
           <div className={'match matchId' +item}>
             <Match matchId={item} key={item}/>
           </div>

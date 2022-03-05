@@ -21,13 +21,13 @@ $loseColor: rgb(194, 73, 73);
     width: 40vw;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    padding: 5px 0;
     .player{
         width: 23vw;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding-right: 4vh;
+        padding: 0 5;
     }
     .score{
         width: 10vw;

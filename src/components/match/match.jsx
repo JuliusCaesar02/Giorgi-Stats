@@ -23,7 +23,7 @@ function Match({matchId}){
         //Mettere a posto assolutamente
         //Metodo poco convinvente e
         //spesso difettoso. 
-        //Trovare alternativa weap,
+        //Trovare alternativa wrap
         ///////////////////////////////
         const team100 = "<div class='team100 win" +matchDetails.info.teams[0].win +"'></div>"
         const team200 = "<div class='team200 win" +matchDetails.info.teams[1].win +"'></div>"
