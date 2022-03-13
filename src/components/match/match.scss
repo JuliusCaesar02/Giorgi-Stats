@@ -1,5 +1,21 @@
 $winColor: rgb(66, 145, 172);
 $loseColor: rgb(194, 73, 73);
+.teamsFlex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 5vw 2vh 5vw;
+}
+.matchInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3vh 15vw 0;
+}
+.matchInfo h1{
+    font-size: medium;
+}
 .team100, .team200{
     margin: 0 15px; padding: 15px;
     &.wintrue{
@@ -31,9 +47,11 @@ $loseColor: rgb(194, 73, 73);
         padding-right: 3vw;
     }
     .score{
+        padding-left: 3vw;
         width: 10vw;
         display: flex;
         flex-direction: row;
+        align-items: center;
         justify-content: space-between;;
     }
 }

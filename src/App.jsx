@@ -30,46 +30,56 @@ function App(){
       .catch(err => console.error('getMatchHistory error:', err));
   }
 
-  return (
-    
+  function printMatchHistory(){
+    if(matchHistory === undefined){
+      return(
+        <div>Loading</div>
+      )
+    }
+    else return(
+      <div className="matchHistory"> 
+        {  
+        matchHistory.map((item)=>{
+          console.log(item)
+          return(
+          <>    
+            <div className={'match matchId' +item}>           
+              <Match matchId={item} key={item}/>
+            </div>
+            {/* <div className="line"></div>   */}    
+          </>
+          )  
+        })
+        }
+      </div>  
+    )
+  }
+
+  return (  
     <>
       <div className="header">
-        <Input input_text={'username'} button_text={'find'}/>
+        <Input input_text={'username'} button_text={'find'} key={1}/>
         {useEffect(() => {
         getId();
         }, [])}
         <h1>Giorgi Stats</h1>
-        <Input input_text={'apiKey'} button_text={'submit'}/>      
+        <Input input_text={'apiKey'} button_text={'submit'} key={2}/>      
       </div>
 
       <div className="profile">
-
         <div className="playerData">
-          <div className='profileIcon' style={{backgroundImage: 'url(http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/' +userData.profileIconId +'.png)'}}>
+          <div className='profileIcon' style={{backgroundImage: 'url(../data/profileicon/' +userData.profileIconId +'.png)'}}>
             <p>{userData.summonerLevel}</p> 
           </div>
           <h1>{userData.name}</h1>
         </div>
-
-        <div className="matchHistory"> 
-          {  
-          matchHistory.map((item)=>{
-            console.log(item)
-            return(
-            <>    
-              <div className={'match matchId' +item}>           
-                <Match matchId={item} key={item}/>
-              </div>
-              <div className="line"></div>      
-            </>
-            )  
-          })
-          }
-        </div>  
       </div>
+      {printMatchHistory()}
+
     </>
-    
-  );
+ 
+
+  )
 }
 export default App;
 
