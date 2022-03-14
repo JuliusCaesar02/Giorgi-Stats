@@ -6,7 +6,7 @@ import './stats.scss'
 function Stats({player, matchTime}){
     return(
         <>
-        <div className={'stats ' +((player.summonerName === localStorage.getItem('username')) ? 'itsYou': '')} key={player.puuid} >
+        <div className={'stats ' +((player.summonerName.toLowerCase() === localStorage.getItem('username').toLowerCase()) ? 'itsYou': '')} key={player.puuid} >
                 <div className="player">
                     <div className='summonerName'>{player.summonerName}</div>
                     <div className='championName'>{player.championName}</div>
@@ -14,12 +14,14 @@ function Stats({player, matchTime}){
                 <img className='championIcon' src={'../../../data/champions/icon/' +player.championName +'.png'} alt="" />
                 <div className="score">
                     <div>{player.kills}</div>
+                    <p>/</p>
                     <div>{player.deaths}</div>
+                    <p>/</p>
                     <div>{player.assists}</div>
-                    <div className='creepScore'>
+                </div>
+                <div className='creepScore'>
                         <div>{player.totalMinionsKilled + player.neutralMinionsKilled}</div>
                         <div>{((player.totalMinionsKilled + player.neutralMinionsKilled) / matchTime).toFixed(2)}</div>
-                    </div>
                 </div>
             </div>
         </>           
