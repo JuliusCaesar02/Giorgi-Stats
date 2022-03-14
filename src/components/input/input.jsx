@@ -5,7 +5,7 @@ import './input.scss'
 function Input({input_text, button_text}){
     return(
         <form onSubmit={()=>{
-          localStorage.setItem(input_text, $('.'+input_text).val())
+          if(input_text, $('.'+input_text).val() != '') localStorage.setItem(input_text, $('.'+input_text).val()) 
         }}>
           <input type="text" placeholder={input_text} className={input_text}/>
           <input type='submit' value=' ' className={button_text}/>

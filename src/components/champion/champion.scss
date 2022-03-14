@@ -1,0 +1,29 @@
+.champion{
+    display: flex;
+    flex-direction: row;
+    .images{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .mastery{
+        height: 40px;
+        width: 40px;
+    }
+    .championIcon{
+        height: 40px;
+        width: 40px;
+        border-radius: 50px;
+        margin-bottom: -9px;
+        border: solid 1px #d7b430;
+        z-index: 999;
+    }
+    .text{
+        width: 3vw;
+        padding: 2vh 2vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}
